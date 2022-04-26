@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" version="3.8.0" client="site" method="upgrade">
+    <name>CG Zoom Page</name>
+    <author>ConseilGouz</author>
+    <version>2.0.1</version>
+    <description>CG_XML_ZOOM_DESCRIPTION</description>
+    <files>
+        <filename>mod_cg_zoompage.xml</filename>
+        <filename module="mod_cg_zoompage">mod_cg_zoompage.php</filename>
+        <filename>index.html</filename>
+        <folder>tmpl</folder>
+        <folder>src</folder>
+	</files>
+	<languages>
+		<language tag="en-GB">language/en-GB/mod_cg_zoompage.ini</language>
+		<language tag="en-GB">language/en-GB/mod_cg_zoompage.sys.ini</language>
+		<language tag="fr-FR">language/fr-FR/mod_cg_zoompage.ini</language>
+		<language tag="fr-FR">language/fr-FR/mod_cg_zoompage.sys.ini</language>
+	</languages>
+		<media destination="mod_cg_zoompage" folder="media">
+		<folder>js</folder>
+		<filename>index.html</filename>
+	</media>
+
+	<namespace path="src">Joomla\Module\CGZoomPage</namespace>
+	<scriptfile>script.php</scriptfile>
+	<changelogurl>https://www.conseilgouz.com/updates/mod_cg_zoompage_changelog.xml</changelogurl>
+    <config>
+		<fields name="params">
+			<fieldset name="basic">
+				<field name="zoom" type="list" default="5" label="CG_INC" description="CG_INC_DESC" size="5">
+			     <option value="2">2%</option>
+				 <option value="5">5%</option>
+				 <option value="10">10%</option>
+			   </field>
+			   <field name="font-color" type="color" default="#52c0ff" label="CG_ICON_COLOR" description="CG_ICON_COLOR_DESC"/>
+				<field name="icon-size" type="list" default="2.5" label="CG_ICON_HEIGHT" description="CG_ICON_HEIGHT_DESC" size="5">
+			     <option value="1">1em</option>
+				 <option value="1.5">1.5em</option>
+				 <option value="2">2em</option>
+				 <option value="2.5">2.5em</option>
+				 <option value="3">3em</option>
+			   </field>
+			</fieldset>
+			<fieldset
+				name="advanced">
+				<field name="moduleclass_sfx" type="text" default="" label="COM_MODULES_FIELD_MODULECLASS_SFX_LABEL" description="COM_MODULES_FIELD_MODULECLASS_SFX_DESC" />
+				<field
+					name="cache"
+					type="list"
+					default="1"
+					label="COM_MODULES_FIELD_CACHING_LABEL"	>
+					<option
+						value="1">JGLOBAL_USE_GLOBAL</option>
+					<option
+						value="0">COM_MODULES_FIELD_VALUE_NOCACHING</option>
+				</field>
+				<field
+					name="cache_time"
+					type="text"
+					default="15"
+					label="COM_MODULES_FIELD_CACHE_TIME_LABEL"
+					 />
+				<field
+					name="cachemode"
+					type="hidden"
+					default="itemid">
+					<option
+						value="itemid"></option>
+				</field>
+			</fieldset>
+		</fields>
+	
+    </config>
+	<updateservers>
+	<server type="extension" name="CG Zoom Page" priority="1">https://www.conseilgouz.com/updates/cg_zoompage_update.xml</server>
+	</updateservers>
+	
+</extension>
