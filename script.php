@@ -1,9 +1,9 @@
 <?php
 /**
-* CG Zoom Page Module  - Joomla 4.0.0 Module 
-* Version			: 2.0.1
+* CG Zoom Page Module  - Joomla 4.x Module 
+* Version			: 2.1.0
 * Package			: CG Zoom Page
-* copyright 		: Copyright (C) 2021 ConseilGouz. All rights reserved.
+* copyright 		: Copyright (C) 2023 ConseilGouz. All rights reserved.
 * license    		: http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
 */
 // No direct access to this file
@@ -18,7 +18,7 @@ class mod_cg_zoompageInstallerScript
 {
 	private $min_joomla_version      = '4.0.0';
 	private $min_php_version         = '7.2';
-	private $name                    = 'CG Zoom PAge';
+	private $name                    = 'CG Zoom Page';
 	private $exttype                 = 'module';
 	private $extname                 = 'cg_zoompage';
 	private $previous_version        = '';
@@ -66,7 +66,7 @@ class mod_cg_zoompageInstallerScript
 		return true;
     }
 	private function postinstall_cleanup() {
-		$obsloteFolders = ['uploads'];
+		$obsloteFolders = ['uploads','js'];
 		// Remove plugins' files which load outside of the component. If any is not fully updated your site won't crash.
 		foreach ($obsloteFolders as $folder)
 		{

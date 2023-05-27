@@ -1,79 +1,78 @@
 /**
 * CG Zoom Article for Joomla 4
-* Version			: 2.0.1
+* Version			: 2.1.0
 * Package			: CG Zoom Page
-* copyright 		: Copyright (C) 2021 ConseilGouz. All rights reserved.
+* copyright 		: Copyright (C) 2023 ConseilGouz. All rights reserved.
 * license    		: http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
 * From              : http://stackoverflow.com/questions/10464038/imitate-browser-zoom-with-javascript
 */
 // zoom 
 // depuis http://stackoverflow.com/questions/10464038/imitate-browser-zoom-with-javascript
 //
-jQuery(document).ready(function($) {
+var options = {};
+document.addEventListener('DOMContentLoaded', function() {
 
 if (typeof Joomla === 'undefined' || typeof Joomla.getOptions === 'undefined') {
 	console.error('Joomla.getOptions not found!\nThe Joomla core.js file is not being loaded.');
 	return false;
 }
-var options = Joomla.getOptions('cg_zoompage');
-if (typeof options === 'undefined' ) {
-		request = {
-			'option' : 'com_ajax',
-			'module' : 'cg_zoompage',
-			'data'   : 'param',
-			'format' : 'raw'
-			};
-			jQuery.ajax({
-				type   : 'POST',
-				data   : request,
-				success: function (response) {
-					options = JSON.parse(response);
-					check_buttons(options);
-				}
-			});
-
-	return true;
+mains = document.querySelectorAll('.mod_zoom_page');
+for(var i=0; i< mains.length; i++) {
+	var $this = mains[i];
+	var myid = $this.getAttribute("data");
+	if (typeof Joomla === 'undefined' || typeof Joomla.getOptions === 'undefined') {
+		options[myid] = '';
+	} else {
+		options[myid] = Joomla.getOptions('cg_zoompage_'+myid);
+	}
+	if (typeof options[myid] === 'undefined' ) { // cache Joomla problem
+		return false;
+	};
+	if (typeof options[myid] !== 'undefined' ) {
+		check_buttons(options[myid]);
+	}
 }
-check_buttons(options);
 });
 function check_buttons(options) {
 var currFFZoom = 1;
 var initFFZoom = 1;
 var currIEZoom = 100;
 var initIEZoom = 100;
-	
-	
-jQuery('#mod_zoom_page #In').on('click',function(){
+$id = options.id;
+$body = document.querySelector('body');
+zoomin = document.querySelector('#In_'+$id);
+zoomin.onclick =function(){
     if (navigator.userAgent.indexOf('Firefox') != -1 && parseFloat(navigator.userAgent.substring(navigator.userAgent.indexOf('Firefox') + 8)) >= 3.6){//Firefox
         var step = (parseInt(options.zoom_in) * 0.01);
         currFFZoom += step; 
-        jQuery('body').css('MozTransform','scale(' + currFFZoom + ')');
+        $body.style.MozTransform = 'scale(' + currFFZoom + ')';
     } else {
         var step = parseInt(options.zoom_in);
         currIEZoom += step;
-        jQuery('body').css('zoom', ' ' + currIEZoom + '%');
+        $body.style.zoom =  currIEZoom + '%';
     }
-});
-jQuery('#mod_zoom_page #Reset').on('click',function(){
+};
+zoomreset = document.querySelector('#Reset_'+$id);
+zoomreset.onclick = function(){
     if (navigator.userAgent.indexOf('Firefox') != -1 && parseFloat(navigator.userAgent.substring(navigator.userAgent.indexOf('Firefox') + 8)) >= 3.6){//Firefox
         currFFZoom = initFFZoom;                 
-        jQuery('body').css('MozTransform','scale(' + initFFZoom + ')');
-
+        $body.style.MozTransform = 'scale(' + currFFZoom + ')';
     } else {
-        currIEZoom = initIEZoom;                 
-        jQuery('body').css('zoom', ' ' + initIEZoom + '%');
+        currIEZoom = initIEZoom;    
+		$body.style.zoom =  currIEZoom + '%';		
     }
-});
-jQuery('#mod_zoom_page #Out').on('click',function(){
+};
+zoomout =document.querySelector('#Out_'+$id);
+zoomout.addEventListener('click',function() {
     if (navigator.userAgent.indexOf('Firefox') != -1 && parseFloat(navigator.userAgent.substring(navigator.userAgent.indexOf('Firefox') + 8)) >= 3.6){//Firefox
         var step = (parseInt(options.zoom_in) * 0.01);
         currFFZoom -= step;                 
-        jQuery('body').css('MozTransform','scale(' + currFFZoom + ')');
+        $body.style.MozTransform = 'scale(' + currFFZoom + ')';
 
     } else {
         var step = parseInt(options.zoom_in);
         currIEZoom -= step;
-        jQuery('body').css('zoom', ' ' + currIEZoom + '%');
+        $body.style.zoom =  currIEZoom + '%';
     }
 });
 }

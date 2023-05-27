@@ -2,8 +2,9 @@
 <extension type="module" version="3.8.0" client="site" method="upgrade">
     <name>CG Zoom Page</name>
     <author>ConseilGouz</author>
-    <version>2.0.1</version>
+    <version>2.1.0</version>
     <description>CG_XML_ZOOM_DESCRIPTION</description>
+	<creationDate>2023/05/27</creationDate>
     <files>
         <filename>mod_cg_zoompage.xml</filename>
         <filename module="mod_cg_zoompage">mod_cg_zoompage.php</filename>
@@ -17,14 +18,13 @@
 		<language tag="fr-FR">language/fr-FR/mod_cg_zoompage.ini</language>
 		<language tag="fr-FR">language/fr-FR/mod_cg_zoompage.sys.ini</language>
 	</languages>
-		<media destination="mod_cg_zoompage" folder="media">
+	<media destination="mod_cg_zoompage" folder="media">
 		<folder>js</folder>
-		<filename>index.html</filename>
+	<filename>index.html</filename>
 	</media>
-
 	<namespace path="src">Joomla\Module\CGZoomPage</namespace>
 	<scriptfile>script.php</scriptfile>
-	<changelogurl>https://www.conseilgouz.com/updates/mod_cg_zoompage_changelog.xml</changelogurl>
+	<changelogurl>https://raw.githubusercontent.com/conseilgouz/mod_cg_zoompage_j4/master/mod_cg_zoompage_changelog.xml</changelogurl>
     <config>
 		<fields name="params">
 			<fieldset name="basic">
@@ -73,7 +73,8 @@
 	
     </config>
 	<updateservers>
-	<server type="extension" name="CG Zoom Page" priority="1">https://www.conseilgouz.com/updates/cg_zoompage_update.xml</server>
+	<server type="extension" name="CG Zoom Page" priority="1">https://raw.githubusercontent.com/conseilgouz/updates_github/master/cg_zoompage_update.xml
+</server>
 	</updateservers>
 	
 </extension>
