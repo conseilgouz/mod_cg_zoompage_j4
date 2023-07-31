@@ -1,14 +1,14 @@
 <?php
 /**
-* CG Zoom Article for Joomla 4
-* Version			: 2.0.1
+* CG Zoom Article for Joomla 4.x/5.x
+* Version			: 2.1.1
 * Package			: CG Zoom Page
 * copyright 		: Copyright (C) 2021 ConseilGouz. All rights reserved.
 * license    		: http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
 * From              : http://stackoverflow.com/questions/10464038/imitate-browser-zoom-with-javascript
 */
 // No direct access
-namespace Joomla\Module\CGZoomPage\Site\Helper;
+namespace ConseilGouz\Module\CGZoomPage\Site\Helper;
 defined('_JEXEC') or die;
 use Joomla\CMS\Factory;
 use Joomla\CMS\Helper\ModuleHelper;
