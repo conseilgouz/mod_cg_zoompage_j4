@@ -1,10 +1,9 @@
 <?php
 /**
-* CG Zoom Article for Joomla 4.x/5.x
-* Version			: 2.1.1
-* Package			: CG Zoom Page
-* copyright 		: Copyright (C) 2021 ConseilGouz. All rights reserved.
-* license    		: http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
+* CG Zoom Article
+* Package			: Joomla 4.x/5.x/6.x
+* copyright 		: Copyright (C) 2025 ConseilGouz. All rights reserved.
+* license    		: https://www.gnu.org/licenses/gpl-3.0.html GNU/GPL
 * From              : http://stackoverflow.com/questions/10464038/imitate-browser-zoom-with-javascript
 */
 // No direct access
@@ -18,8 +17,7 @@ class CGZoompageHelper {
 	public static function getAjax() {
 		$module = ModuleHelper::getModule('cg_zoompage');
 		$params = new Registry($module->params);  		
-        $input = Factory::getApplication()->input;
-        $output = '';
+        $input = Factory::getApplication()->getInput();
 		if ($input->get('data') == "param") {
 			return '{"name":"'.$module->name.'","zoom_in":"'.$params->get('zoom').'"}';
 		}
