@@ -2,7 +2,7 @@
 <extension type="module" version="3.8.0" client="site" method="upgrade">
     <name>CG Zoom Page</name>
     <author>ConseilGouz</author>
-    <version>2.2.0</version>
+    <version>2.2.1</version>
     <description>CG_XML_ZOOM_DESCRIPTION</description>
 	<creationDate>2025-10-01</creationDate>
     <files>
